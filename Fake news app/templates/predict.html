@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-6 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Predict News Authenticity</h1>
+        <form action="/api/predict" method="post" id="predict-form">
+            <textarea name="news_text" class="w-full h-32 p-2 border rounded mb-4" placeholder="Enter news text..."></textarea>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded w-full">Predict</button>
+        </form>
+        <div id="result" class="mt-4 text-lg font-semibold"></div>
+    </div>
+    <script>
+        document.getElementById('predict-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const newsText = formData.get('news_text');
+
+            const response = await fetch('/api/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ news_text })
+            });
+
+            const result = await response.json();
+            document.getElementById('result').textContent = result.prediction || result.message;
+        };
+    </script>
+</body>
+</html>
