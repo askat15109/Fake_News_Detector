@@ -1,18 +1,110 @@
-# Fake_News_Detector
-Fake News Detector
-The Fake News Detector is an advanced AI-powered tool designed to verify the authenticity of news articles and social media posts. Using Natural Language Processing (NLP) and Machine Learning, the system analyzes the credibility of a given text by comparing it with trusted news sources and detecting patterns commonly found in misinformation.
+# 📰 Fake News Detector
 
-Key Features:
-AI-Powered Fact-Checking: Uses NLP and deep learning models to assess the reliability of news content.
-Source Validation: Cross-checks the news against a database of credible news websites.
-Sentiment Analysis: Identifies emotionally charged or misleading narratives.
-Deepfake Detection (Optional): Integrates with media analysis tools to flag AI-generated or manipulated content.
-User-Friendly Interface: Provides a simple way for users to input news articles, URLs, or text for verification.
-Real-Time Updates: Leverages APIs to fetch the latest fact-checking results from verified sources.
-How It Works:
-User Input: The user submits a news article, URL, or text snippet.
-Preprocessing & Analysis: The system tokenizes and analyzes the text using NLP techniques.
-Fact-Checking & Classification: The model classifies the content as True, Misleading, or Fake based on multiple factors.
-Result & Explanation: The user receives a credibility score along with a justification for the classification.
-This solution helps combat misinformation by providing quick and reliable fact-checking, ensuring that users consume only verified and credible news.
+A machine learning-based web app that detects fake news using Natural Language Processing (NLP) and a trained Support Vector Machine (SVM) model. It allows users to input news text and returns whether the content is likely **Real** or **Fake**.
 
+---
+
+## 🗂️ Project Structure
+
+```
+fake-news-detector/
+├── templates/           # HTML templates (Flask frontend)
+│   └── index.html
+├── app.py               # Main Flask application
+├── svm_model.pkl        # Trained SVM classification model
+├── vectorizer.pkl       # Fitted TF-IDF vectorizer
+├── requirements.txt     # Required Python packages
+└── README.md
+```
+
+---
+
+## 🚀 Features
+
+- ✅ Detects fake news using machine learning
+- 🧠 SVM model trained on labeled news dataset
+- ✍️ Accepts user input text for analysis
+- 🖥️ Simple and intuitive web interface (Flask)
+- 📊 Displays results with classification output
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: HTML (Jinja2 via Flask)
+- **Backend**: Python, Flask
+- **ML/NLP**: 
+  - `scikit-learn` (SVM Classifier, TF-IDF Vectorizer)
+  - `nltk` for text preprocessing
+- **Model Files**: `svm_model.pkl`, `vectorizer.pkl`
+
+---
+
+## 🧪 How to Run
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/yourusername/fake-news-detector.git
+cd fake-news-detector
+```
+
+2. **Install Dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Run the Flask App**
+
+```bash
+python app.py
+```
+
+4. **Access the App**
+
+Open your browser and go to [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+---
+
+## 📚 Dataset Used
+
+- [Fake and Real News Dataset – Kaggle](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset)
+
+---
+
+## 🧠 Model Training (Optional)
+
+To train your own model:
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import LinearSVC
+import joblib
+
+# Vectorization
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(news_texts)
+
+# Model Training
+model = LinearSVC()
+model.fit(X, labels)
+
+# Save Model and Vectorizer
+joblib.dump(model, 'svm_model.pkl')
+joblib.dump(vectorizer, 'vectorizer.pkl')
+```
+
+---
+
+## 📃 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+**Akshat Choubey**  
+📫 Email: [akshatchoubey2@gmail.com]  
+🔗 GitHub: [@yourusername](https://github.com/askat15109)
