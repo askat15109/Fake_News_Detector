@@ -1,7 +1,7 @@
 # 📰 Fake News Detector
 
 A machine learning-based web app that detects fake news using Natural Language Processing (NLP) and a trained Support Vector Machine (SVM) model. It allows users to input news text and returns whether the content is likely **Real** or **Fake**.
-![Fake News Detector Screenshot](assets/demo.png)
+![Fake News Detector Screenshot](assets/fake.png)
 
 ---
 
